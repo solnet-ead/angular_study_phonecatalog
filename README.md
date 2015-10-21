@@ -1,31 +1,13 @@
 # AngularJS Phone Catalog Tutorial Application
 
-## Overview
+built on the top of **Google Phone Gallery** angular seed and add more stuff on for Angular studying purpose
 
-This application takes the developer through the process of building a web-application using
-angular. The application is loosely based on the **Google Phone Gallery**, which no longer
-exists. Here is a historical reference: [Google Phone Gallery on WayBack](http://web.archive.org/web/20131215082038/http://www.android.com/devices/).
+framework have been added since start of project
 
-Each tagged commit is a separate lesson teaching a single aspect of angular.
+**Grunt**
 
-The full tutorial can be found at http://docs.angularjs.org/tutorial.
-
-## Prerequisites
-
-### Git
-### Node.js and Tools
-
-
-## Workings of the application
-
-- The application filesystem layout structure is based on the [angular-seed] project.
-- There is no dynamic backend (no application server) for this application. Instead we fake the
-  application server by fetching static json files.
-- Read the Development section at the end to familiarize yourself with running and developing
-  an angular application.
 
 ## Contact
-
 For more information on AngularJS please check out http://angularjs.org/
 
 [7 Zip]: http://www.7-zip.org/
