@@ -63,8 +63,14 @@ module.exports = function(grunt) {
       gruntfile: {
         src: 'Gruntfile.js'
       },
-      lib_test: {
-        src: ['app/js/*.js', 'test/unit/*.js', 'test/e2e/*.js']
+      app_files: {
+        src: 'app/js/*.js'
+      },
+      unit_testing_files: {
+        src: 'test/unit/*.js'
+      },
+      end_2_end_testing_files: {
+        src: 'test/e2e/*.js'
       }
     },
     karma: {
@@ -121,7 +127,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-protractor-runner');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'karma']);
+  grunt.registerTask('default', ['jshint', 'karma', 'e2e-test']);
 
   // e2e test
   grunt.registerTask('e2e-test', ['connect:test', 'protractor:e2e']);
