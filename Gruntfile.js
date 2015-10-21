@@ -73,17 +73,30 @@ module.exports = function(grunt) {
         singleRun: true
       }
     },
+    connect: {
+      options: {
+        port: 9999,
+        hostname: 'localhost'
+      },
+      test: {
+        options: {
+        // set the location of the application files
+        base: ['']
+        }
+      }
+    },
     protractor: {
       options: {
         configFile: "test/protractor-conf.js", // Default config file 
-        keepAlive: true, // If false, the grunt process stops when the test fails. 
         noColor: false, // If true, protractor will not use colors in its output. 
         args: {
           // Arguments passed to the command 
         }
       },
-      your_target: {   // Grunt requires at least one target to run so you can simply put 'all: {}' here too. 
-        all: {}
+      e2e: {   // Grunt requires at least one target to run so you can simply put 'all: {}' here too. 
+        options: {
+          keepAlive: false // If false, the grunt process stops when the test fails. 
+        }
       }
     },    
     watch: {
@@ -103,10 +116,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-protractor-runner');
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'karma']);
+
+  // e2e test
+  grunt.registerTask('e2e-test', ['connect:test', 'protractor:e2e']);
 
 };
