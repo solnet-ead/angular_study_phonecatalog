@@ -8,12 +8,16 @@ module.exports = function(grunt) {
       version: '1.0.0'
     },
     pkg: grunt.file.readJSON('package.json'),
-    banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-      '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-      '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-      '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-      ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
+    banner: '/** \n' + 
+              '* Project: <%= pkg.name %>\n' +
+              '* Version: <%= pkg.version %>\n' +
+              '* Date:    <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+              '*/',
+    
     // Task configuration.
+    clean: {
+      src: 'dist'
+    },
     concat: {
       options: {
         banner: '<%= banner %>',
@@ -122,6 +126,18 @@ module.exports = function(grunt) {
       },
       target: {
         src: 'app/index.html'
+      }
+    },
+    // Adds a banner to built files
+    usebanner: {
+      options: {
+        position: 'top',
+        banner: '<%= banner %>'
+      },
+      files: {
+        src: [
+        'app/js/app.js'
+        ]
       }
     }
   });
