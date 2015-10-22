@@ -110,9 +110,18 @@ module.exports = function(grunt) {
         files: '<%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile']
       },
-      lib_test: {
-        files: '<%= jshint.lib_test.src %>',
-        tasks: ['jshint:lib_test', 'qunit']
+      app_files: {
+        files: '<%= jshint.app_files.src %>',
+        tasks: 'jshint:app_files'
+      }
+    },
+    bowerInstall: {
+      options: {
+        exclude: [],
+        fileTypes: {}
+      },
+      target: {
+        src: 'app/index.html'
       }
     }
   });
@@ -125,9 +134,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-protractor-runner');
+  grunt.loadNpmTasks('grunt-bower-install');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'karma', 'e2e-test']);
+  grunt.registerTask('default', ['jshint', 'karma', 'e2e-test', 'watch:app_files']);
 
   // e2e test
   grunt.registerTask('e2e-test', ['connect:test', 'protractor:e2e']);
