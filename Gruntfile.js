@@ -86,12 +86,19 @@ module.exports = function(grunt) {
     connect: {
       options: {
         port: 9999,
-        hostname: 'localhost'
+        hostname: 'localhost',
+        keepalive: true
       },
       test: {
         options: {
-        // set the location of the application files
-        base: ['']
+          // set the location of the application files
+          base: [''],
+          keepalive: false
+        }
+      },
+      alive: {
+        options: {
+          base: 'app'
         }
       }
     },
@@ -133,6 +140,9 @@ module.exports = function(grunt) {
       options: {
         position: 'top',
         banner: '<%= banner %>'
+        /* TO-DO: regex is not working, fix later
+        replace: '\/\*\*(.\n)*\*\/'
+        */
       },
       files: {
         src: [
@@ -149,6 +159,9 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['jshint', 'karma', 'e2e-test', 'watch:app_files']);
 
   // e2e test
-  grunt.registerTask('e2e-test', ['connect:test', 'protractor:e2e']);
+  grunt.registerTask('e2e-test', ['server', 'protractor:e2e']);
 
+  grunt.registerTask('server', 'connect:test');
+
+  grunt.registerTask('server_run', 'connect:alive');
 };
