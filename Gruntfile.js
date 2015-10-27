@@ -1,4 +1,6 @@
-/*global module:false*/
+/* eslint strict: [2, "global"] */
+'use strict';
+
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -37,33 +39,11 @@ module.exports = function(grunt) {
         dest: 'dist/FILE_NAME.min.js'
       }
     },
-    jshint: {
-      options: {
-        globalstrict: false,
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        unused: true,
-        boss: true,
-        eqnull: true,
-        browser: true,
-        jasmine: true,
-        node: true,
-        globals: {
-          jQuery: true,
-          module: true,
-          browser: true,
-          element: true,
-          by: true,
-          angular: true,
-          inject: true
-        }
-      },
+    eslint: {
+      target: [
+        'app/js/**/*.js',
+        'Gruntfile.js'
+      ],
       gruntfile: {
         src: 'Gruntfile.js'
       },
@@ -153,7 +133,7 @@ module.exports = function(grunt) {
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
   // Add task aliases
-  grunt.registerTask('default', ['jshint', 'karma', 'e2e-test', 'watch:app_files']);
+  grunt.registerTask('default', ['eslint', 'karma', 'e2e-test', 'watch:app_files']);
   grunt.registerTask('e2e-test', ['server_test', 'protractor:e2e']);
   grunt.registerTask('server_test', 'connect:test');
   grunt.registerTask('server_app', 'connect:alive');
