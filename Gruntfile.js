@@ -138,16 +138,13 @@ module.exports = function(grunt) {
     // Adds a banner to built files
     usebanner: {
       options: {
-        position: 'top',
-        banner: '<%= banner %>'
-        /* TO-DO: regex is not working, fix later
-        replace: '\/\*\*(.\n)*\*\/'
-        */
+        position: 'replace',
+        banner: '<%= banner %>',
+        replaceContent: true,
+        replace:  '^\\/\\*\\*(.|\\n)\\*\\*\\/$'
       },
       files: {
-        src: [
-        'app/js/app.js'
-        ]
+        src: ['app/js/app.js']
       }
     }
   });
@@ -155,13 +152,9 @@ module.exports = function(grunt) {
   // filter npm modules and load them
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-  // Default task.
+  // Add task aliases
   grunt.registerTask('default', ['jshint', 'karma', 'e2e-test', 'watch:app_files']);
-
-  // e2e test
-  grunt.registerTask('e2e-test', ['server', 'protractor:e2e']);
-
-  grunt.registerTask('server', 'connect:test');
-
-  grunt.registerTask('server_run', 'connect:alive');
+  grunt.registerTask('e2e-test', ['server_test', 'protractor:e2e']);
+  grunt.registerTask('server_test', 'connect:test');
+  grunt.registerTask('server_app', 'connect:alive');
 };
