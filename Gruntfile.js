@@ -5,17 +5,17 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    // Metadata.
     meta: {
       version: '1.0.0'
     },
     pkg: grunt.file.readJSON('package.json'),
-    banner: '/** \n' + 
-              '* Project: <%= pkg.name %>\n' +
-              '* Version: <%= pkg.version %>\n' +
-              '* Date:    <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+    banner: '/** \n' +
+              '* Project:   <%= pkg.name %>\n' +
+              '* Version:   <%= pkg.version %>\n' +
+              '* Date:      <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+              '* Copyright: Solnet\n' +
               '*/',
-    
+
     // Task configuration.
     clean: {
       src: 'dist'
@@ -26,7 +26,7 @@ module.exports = function(grunt) {
         stripBanners: true
       },
       dist: {
-        src: ['lib/FILE_NAME.js'],
+        src: 'app/js/*.js',
         dest: 'dist/FILE_NAME.js'
       }
     },
@@ -84,23 +84,19 @@ module.exports = function(grunt) {
     },
     protractor: {
       options: {
-        configFile: "test/protractor-conf.js", // Default config file 
-        noColor: false, // If true, protractor will not use colors in its output. 
+        configFile: "test/protractor-conf.js", // Default config file
+        noColor: false, // If true, protractor will not use colors in its output.
         args: {
-          // Arguments passed to the command 
+          // Arguments passed to the command
         }
       },
-      e2e: {   // Grunt requires at least one target to run so you can simply put 'all: {}' here too. 
+      e2e: {   // Grunt requires at least one target to run so you can simply put 'all: {}' here too.
         options: {
-          keepAlive: false // If false, the grunt process stops when the test fails. 
+          keepAlive: false // If false, the grunt process stops when the test fails.
         }
       }
-    },    
+    },
     watch: {
-      gruntfile: {
-        files: '<%= jshint.gruntfile.src %>',
-        tasks: ['jshint:gruntfile']
-      },
       app_files: {
         files: '<%= jshint.app_files.src %>',
         tasks: 'jshint:app_files'
@@ -114,18 +110,6 @@ module.exports = function(grunt) {
       target: {
         src: 'app/index.html'
       }
-    },
-    // Adds a banner to built files
-    usebanner: {
-      options: {
-        position: 'replace',
-        banner: '<%= banner %>',
-        replaceContent: true,
-        replace:  '^\\/\\*\\*(.|\\n)\\*\\*\\/$'
-      },
-      files: {
-        src: ['app/js/app.js']
-      }
     }
   });
 
@@ -137,4 +121,5 @@ module.exports = function(grunt) {
   grunt.registerTask('e2e-test', ['server_test', 'protractor:e2e']);
   grunt.registerTask('server_test', 'connect:test');
   grunt.registerTask('server_app', 'connect:alive');
+  grunt.registerTask('build', ['concat', 'uglify']);
 };
