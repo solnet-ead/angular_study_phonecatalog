@@ -1,14 +1,3 @@
-/** 
-* Project: angular-phonecatalog
-* Version: 1.0.1
-* Date:    2015-10-28
-*/
-/** 
-* Project: angular-phonecatalog
-* Version: 1.0.0
-* Date:    2015-10-23
-*/
-
 'use strict';
 
 /* App Module */
