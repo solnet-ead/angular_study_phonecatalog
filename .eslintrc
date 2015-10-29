@@ -8,7 +8,12 @@
   },
   "globals": {
     "angular": true,
-    "jQuery": true
+    "jQuery": true,
+    "inject": true,
+    "ctrl": true,
+    "browser": true,
+    "element": true,
+    "by": true
   },
   "rules": {
     "comma-dangle": [
@@ -69,7 +74,7 @@
         "string": true
       }
     ],
-    "no-invalid-this": 2,
+    "no-invalid-this": 0,
     "no-native-reassign": [
         2,
         {
@@ -182,7 +187,8 @@
     "no-inline-comments": 0,
     "no-lonely-if": 2,
     "no-mixed-spaces-and-tabs": [
-      2
+      2,
+      "smart-tabs"
     ],
     "no-multiple-empty-lines": [
       2,
@@ -355,7 +361,7 @@
     "no-undef-init": 2,
     "no-undef": 2,
     "no-undefined": 2,
-    "no-unused-vars": 2,
+    "no-unused-vars": 0,
     "camelcase": [
       2,
       {

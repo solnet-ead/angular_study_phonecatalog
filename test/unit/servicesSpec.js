@@ -7,6 +7,6 @@ describe('service', function() {
 
   // Test service availability
   it('check the existence of Phone factory', inject(function(Phone) {
-      expect(Phone).toBeDefined();
-    }));
+    expect(Phone).toBeDefined();
+  }));
 });

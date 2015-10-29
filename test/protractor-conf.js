@@ -1,3 +1,5 @@
+'use strict';
+
 exports.config = {
   allScriptsTimeout: 11000,
 
@@ -6,7 +8,7 @@ exports.config = {
   ],
 
   capabilities: {
-    'browserName': 'chrome'
+    browserName: 'chrome'
   },
 
   chromeOnly: true,

@@ -42,20 +42,9 @@ module.exports = function(grunt) {
     eslint: {
       target: [
         'app/js/**/*.js',
+        'test/**/*.js',
         'Gruntfile.js'
-      ],
-      gruntfile: {
-        src: 'Gruntfile.js'
-      },
-      appFiles: {
-        src: 'app/js/*.js'
-      },
-      unitTestingFiles: {
-        src: 'test/unit/*.js'
-      },
-      end2endTestingFiles: {
-        src: 'test/e2e/*.js'
-      }
+      ]
     },
     karma: {
       unit: {
