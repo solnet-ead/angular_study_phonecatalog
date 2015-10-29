@@ -47,13 +47,13 @@ module.exports = function(grunt) {
       gruntfile: {
         src: 'Gruntfile.js'
       },
-      app_files: {
+      appFiles: {
         src: 'app/js/*.js'
       },
-      unit_testing_files: {
+      unitTestingFiles: {
         src: 'test/unit/*.js'
       },
-      end_2_end_testing_files: {
+      end2endTestingFiles: {
         src: 'test/e2e/*.js'
       }
     },
@@ -71,8 +71,7 @@ module.exports = function(grunt) {
       },
       test: {
         options: {
-          // set the location of the application files
-          base: [''],
+          base: [''], // set the location of the application files
           keepalive: false
         }
       },
@@ -84,10 +83,9 @@ module.exports = function(grunt) {
     },
     protractor: {
       options: {
-        configFile: "test/protractor-conf.js", // Default config file
+        configFile: 'test/protractor-conf.js', // Default config file
         noColor: false, // If true, protractor will not use colors in its output.
-        args: {
-          // Arguments passed to the command
+        args: { // Arguments passed to the command
         }
       },
       e2e: {   // Grunt requires at least one target to run so you can simply put 'all: {}' here too.
@@ -97,7 +95,7 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      app_files: {
+      appFiles: {
         files: '<%= jshint.app_files.src %>',
         tasks: 'jshint:app_files'
       }
@@ -117,9 +115,9 @@ module.exports = function(grunt) {
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
   // Add task aliases
-  grunt.registerTask('default', ['eslint', 'karma', 'e2e-test', 'watch:app_files']);
-  grunt.registerTask('e2e-test', ['server_test', 'protractor:e2e']);
-  grunt.registerTask('server_test', 'connect:test');
-  grunt.registerTask('server_app', 'connect:alive');
+  grunt.registerTask('default', ['eslint', 'karma', 'e2eTest', 'watch:appFiles']);
+  grunt.registerTask('e2eTest', ['serverTest', 'protractor:e2e']);
+  grunt.registerTask('serverTest', 'connect:test');
+  grunt.registerTask('serverApp', 'connect:alive');
   grunt.registerTask('build', ['concat', 'uglify']);
 };

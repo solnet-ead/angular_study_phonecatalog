@@ -6,6 +6,10 @@
     "browser": true,
     "builtin": true
   },
+  "globals": {
+    "angular": true,
+    "jQuery": true
+  },
   "rules": {
     "comma-dangle": [
       2,
@@ -51,7 +55,7 @@
       1,
       2
     ],
-    "consistent-return": 2,
+    "consistent-return": 0,
     "default-case": 2,
     "no-alert": 2,
     "no-extra-bind": 2,
@@ -129,7 +133,7 @@
     "func-names": 0,
     "func-style": [
       2,
-      "declaration"
+      "expression"
     ],
     "id-length": [
       2,
@@ -165,7 +169,7 @@
     ],
     "linebreak-style": [
       2,
-      "unix"
+      "windows"
     ],
     "max-nested-callbacks": [
       1,
@@ -276,7 +280,7 @@
     ],
     "dot-location": [
       2,
-      "property"
+      "object"
     ],
     "eqeqeq": [
       2,
@@ -341,7 +345,7 @@
     ],
     "strict": [
       2,
-      "function"
+      "global"
     ],
     "no-delete-var": 2,
     "no-shadow-restricted-names": 2,
